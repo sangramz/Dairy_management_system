@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+  <?php
+    include 'includes/reghead.php';
+  ?>
+
+<body class="fixed-left" onload="myFunction()" style="margin:0;">
+
+      <div id="loader"></div>
+        <!-- Begin page -->
+        <div id="wrapper" class="animate-bottom">
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div style="width: 70%; margin-left:15%; padding-top:3%;">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container">
+                        <!-- Wizard with Validation -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-warning">
+                                    <div class="panel-heading" style="background-color:goldenrod">
+                                        <h3 class="panel-title" style="color:white">Need Help?  <i class="fa fa-phone"></i> 9999999999</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                      <div class="row">
+                                        <div class="col-lg-6">
+                                          <img src="images/odilogo.jpg" width="25%"/>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                          <h2 style="font-weight:bold">ONLINE REGISTERATION</h2>
+                                        </div>
+
+                                      </div>
+
+                                      <hr>
+
+                                      <form id="wizard-validation-form" action="auth/signup.php" method="post">
+                                          <div>
+                                            <h3>Profile</h3>
+                                              <section>
+                                                <div class="form-group clearfix">
+                                                  <div class="row">
+
+                                                    <div class="col-lg-4">
+                                                      <label class="control-label" for="fstnm">First Name </label>
+                                                      <input class="form-control" id="fstnm" name="fname" type="text"/>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                      <label class="control-label" for="scndnm">Middle Name(Optional) </label>
+                                                      <input class="form-control" id="scndnm" name="mname" type="text"/>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                      <label class="control-label" for="lstnm">Last Name </label>
+                                                      <input class="form-control" id="lstnm" name="lname" type="text"/>
+                                                    </div>
+
+                                                  </div>
+                                                </div>
+
+
+                                                <div class="form-group clearfix">
+                                                  <div class="row">
+                                                      <div class="col-lg-6">
+                                                        <label class="control-label" for="email2">Email</label>
+
+                                                            <input name="email" type="text" class="form-control">
+                                                    </div>
+
+                                                    <div class="col-lg-6">
+                                                    <label class="control-label " for="phn">Phone </label>
+
+                                                        <input class="form-control" id="phn" name="phone" type="text"/>
+
+                                                  </div>
+
+                                                  </div>
+                                                </div>
+
+
+                                                  <div class="form-group clearfix">
+                                                    <div class="row">
+                                                      <div class="col-lg-6">
+                                                      <label class="control-label " for="password2">Password </label>
+
+                                                          <input id="password2" name="password" type="password" class="form-control">
+
+                                                    </div>
+
+                                                    <div class="col-lg-6">
+                                                      <label class="control-label " for="confirm2">Confirm Password </label>
+
+                                                          <input id="confirm2" name="password1" type="password" class="form-control" onchange="pwdmatch()">
+                                                          <span id="pwdmr" style="color:red"></span>
+
+                                                    </div>
+                                                  </div>
+                                                </div>
+
+
+                                                  <div class="form-group clearfix">
+                                                      <label class="col-lg-12 control-label ">(*)All Fields are Mandatory</label>
+                                                  </div>
+                                              </section>
+
+                                            <h3>Your Information</h3>
+                                              <section>
+                                                <div class="form-group clearfix">
+                                                    <div class="row">
+                                                      <div class="col-lg-6">
+                                                        <label class="control-label" for="ad1"> Address 1</label>
+                                                        <input id="ad1" name="add1" type="text" class="form-control"/>
+                                                      </div>
+                                                      <div class="col-lg-6">
+                                                        <label class="control-label " for="ad2"> Address 2</label>
+                                                        <input id="ad2" name="add2" type="text" class="form-control"/>
+                                                      </div>
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group clearfix">
+                                                    <div class="row">
+                                                      <div class="col-lg-4">
+                                                        <label class="control-label " for="address2">City</label>
+                                                        <input name="city" type="text" class="form-control">
+                                                      </div>
+                                                      <div class="col-lg-4">
+                                                        <label class="control-label " for="pincode">Pin</label>
+                                                        <input id="pincode" name="pin" type="text" class="form-control">
+                                                      </div>
+                                                      <div class="col-lg-4">
+                                                        <label class="control-label" for="landmark">Landmark(Optional)</label>
+                                                        <input name="lndmk" type="text" class="form-control">
+                                                      </div>
+                                                    </div>
+                                                </div>
+
+                                              </section>
+
+                                            <h3>Pick Plan</h3>
+                                              <section>
+                                                <div class="panel panel-border panel-danger">
+                                                  <div class="panel-heading">
+                                                    <h3 class="panel-title" style="text-align:center">Your Milk Consuming preferences</h3>
+                                                  </div>
+                                                  <div class="panel-body">
+                                                    <div class="row" style="padding-left:5%">
+                                                      <div class="col-lg-6">
+                                                        <a class="btn btn-success btn-lg waves-effect waves-light btn-block" data-toggle="modal" data-target="#dailyreg">Daily</a>
+                                                        <div id="dailyreg" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="custom-width-modalLabel" aria-hidden="true" style="display: none;">
+                                                          <div class="modal-dialog" style="width:55%;">
+                                                            <div class="modal-content">
+                                                              <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                <h4 class="modal-title" id="custom-width-modalLabel" style="text-align:center">My Daily Milk Requirement</h4>
+                                                              </div>
+                                                              <div class="modal-body">
+                                                                <div class="row">
+                                                                  <div class="col-lg-5">
+                                                                    <label>Pasterized & Homogeniused Milk = </label>
+                                                                  </div>
+                                                                  <div class="col-lg-4">
+                                                                    <input class="form-control input-lg " type="text" name="qty">
+                                                                  </div>
+                                                                  <div class="col-lg-3">
+                                                                    <label>  Litres Per Day</label>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                              <div class="modal-footer">
+                                                                <button type="button" class="btn btn-success waves-effect waves-light" data-dismiss="modal" onclick="plan()">Done</button>
+                                                              </div>
+                                                            </div><!-- /.modal-content -->
+                                                          </div><!-- /.modal-dialog -->
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-lg-6">
+                                                        <a class="btn btn-success btn-lg waves-effect waves-light btn-block" data-toggle="modal" data-target="#custom-width-modal1">Non-Daily</a>
+                                                        <div id="custom-width-modal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="custom-width-modalLabel" aria-hidden="true" style="display: none;">
+                                                          <div class="modal-dialog" style="width:55%;">
+                                                            <div class="modal-content">
+                                                              <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                <h4 class="modal-title" id="custom-width-modalLabel" style="text-align:center">My Regular Milk Requirement</h4>
+                                                              </div>
+                                                              <div class="modal-body">
+                                                                <div class="row">
+                                                                  <div class="col-lg-5">
+                                                                    <label for="mreq">Pasterized & Homogeniused Milk = </label>
+                                                                  </div>
+                                                                  <div class="col-lg-4">
+                                                                    <input class="form-control input-lg" type="text" id="ndqty" name="qty1">
+                                                                  </div>
+                                                                  <div class="col-lg-3">
+                                                                    <label>  Litres Per Day</label>
+                                                                  </div>
+                                                                </div>
+                                                                <hr>
+                                                                <h4 style="text-align:center">Reccurence Pattern</h4>
+                                                                <hr>
+                                                                <!-- Reccurence Pattern -->
+                                                                <div class="row">
+                                                                  <div class="col-lg-4">
+                                                                    <div id="myRadioGroup">
+                                                                      <div class="radio radio-danger">
+                                                                        <input type="radio" id="Daily" name='recurr' value='1'>
+                                                                        <label for="Daily">Daily</label>
+                                                                      </div>
+                                                                      <hr style="color:black">
+                                                                      <div class="radio radio-danger">
+                                                                        <input type="radio" id="Weekly" name='recurr' value='2'>
+                                                                        <label for="Weekly">Weekly</label>
+                                                                      </div>
+                                                                    </div>
+                                                                  </div>
+                                                                  <div class="col-lg-8">
+                                                                    <div id="1" class="desc">
+                                                                      <div class="panel panel-primary">
+                                                                        <div class="panel-body">
+                                                                          <div class="radio radio-danger">
+                                                                            <input id="dod" type="radio" name="altpats" value="1">
+                                                                            <label for="dod">Alternate Day (Every 2 Days)</label>
+                                                                          </div>
+                                                                          <br/>
+                                                                          <div class="row">
+                                                                            <div class="col-lg-2">
+                                                                              <div class="radio radio-danger" style="margin-top:0px; margin-bottom:0px">
+                                                                                <input id="nod" type="radio" name="altpats" value="2">
+                                                                                <label for="nod">Every</label>
+                                                                              </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3">
+                                                                              <input class="form-control input" type="text" id="udaltdays" name="altdays">
+                                                                            </div>
+                                                                            <div class="col-lg-2">
+                                                                              <label>  Day(s)</label>
+                                                                            </div>
+                                                                          </div>
+                                                                        </div>
+                                                                      </div>
+                                                                    </div>
+
+                                                                    <div id="2" class="desc">
+                                                                      <div class="panel panel-primary">
+                                                                        <div class="panel-heading"><h4 style="color:white">WEEKLY</h4></div>
+                                                                        <div class="panel-body">
+                                                                          <div class="row">
+                                                                            <div class="col-md-3">
+                                                                              <div class="checkbox checkbox-primary">
+                                                                                <input id="sun" type="checkbox" name="days_check[]" value="Sunday">
+                                                                                <label for="sun">Sunday</label>
+                                                                              </div>
+                                                                            </div>
+                                                                            <div class="col-md-3">
+                                                                              <div class="checkbox checkbox-primary">
+                                                                                <input id="M" type="checkbox"  name="days_check[]" value="Monday">
+                                                                                <label for="M">Monday</label>
+                                                                              </div>
+                                                                            </div>
+                                                                            <div class="col-md-3">
+                                                                              <div class="checkbox checkbox-primary">
+                                                                                <input id="t" type="checkbox" name="days_check[]" value="Tuesday">
+                                                                                <label for="t">Tuesday</label>
+                                                                              </div>
+                                                                            </div>
+                                                                            <div class="col-md-3">
+                                                                              <div class="checkbox checkbox-primary">
+                                                                                <input id="w" type="checkbox" name="days_check[]" value="Wednesday">
+                                                                                <label for="w">Wednesday</label>
+                                                                              </div>
+                                                                            </div>
+                                                                          </div>
+                                                                          <div class="row">
+                                                                            <div class="col-md-3">
+                                                                              <div class="checkbox checkbox-primary">
+                                                                                <input id="th" type="checkbox" name="days_check[]" value="Thursday">
+                                                                                <label for="th">Thursday</label>
+                                                                              </div>
+                                                                            </div>
+                                                                            <div class="col-md-3">
+                                                                              <div class="checkbox checkbox-primary">
+                                                                                <input id="f" type="checkbox" name="days_check[]" value="Friday">
+                                                                                <label for="f">Friday</label>
+                                                                              </div>
+                                                                            </div>
+                                                                            <div class="col-md-3">
+                                                                              <div class="checkbox checkbox-primary">
+                                                                                <input id="sat" type="checkbox" name="days_check[]" value="Saturday">
+                                                                                <label for="sat">Saturday</label>
+                                                                              </div>
+                                                                            </div>
+                                                                          </div>
+                                                                        </div>
+                                                                      </div>
+                                                                    </div>
+                                                                  </div>
+                                                                  <!-- Reccurence pattern-->
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                  <button type="button" class="btn btn-success waves-effect waves-light" data-dismiss="modal" onclick="plan_nd()">Done</button>
+                                                                </div>
+                                                              </div><!-- /.modal-content -->
+                                                            </div><!-- /.modal-dialog -->
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </section>
+                                                <h3>Payment</h3>
+                                                <section>
+                                                  <div class="form-group clearfix">
+                                                    <div class="col-lg-12">
+                                                      <div class="panel panel-default">
+                                                        <div class="panel-heading">
+                                                          <h3 class="panel-title">Your Daily Milk Consuming Preferences</h3>
+                                                        </div>
+                                                        <div class="panel-body">
+                                                          <li><span id="qnty"></span> Litre/s of Pasturized Milk for every <span id="sched"></span></li>
+                                                        </div>
+                                                      </div>
+                                                      <div class="panel panel-default">
+                                                        <div class="panel-heading">
+                                                          <h3 class="panel-title">List of Plans</h3>
+                                                        </div>
+                                                        <div class="panel-body">
+                                                          <div class="row">
+                                                              <div class="col-md-6">
+                                                                <div class="radio radio-danger">
+                                                                  <input id="paysched1" type="radio" name="paysched" value="1">
+                                                                  <label for="paysched1">For 30 days Subscriptions, <span id="l1"></span> Litres, Rs. <span id="p1"></span></label>
+                                                                </div>
+                                                                <div class="radio radio-danger">
+                                                                  <input id="paysched2" type="radio" name="paysched" value="2">
+                                                                  <label for="paysched2">For 3 Months Subscriptions, <span id="l2"></span> Litres, Rs. <span id="p2"></span></label>
+                                                                 </div>
+                                                                 <div class="radio radio-danger">
+                                                                   <input id="paysched3" type="radio" name="paysched" value="3">
+                                                                   <label for="paysched3">For Half Year Subscriptions, <span id="l3"></span> Litres, Rs. <span id="p3"></span></span></label>
+                                                                 </div>
+                                                               </div>
+
+                                                               <div class="col-md-6">
+                                                                <div class="row">
+                                                                  <div class="col-md-12">
+                                                                    <h4>Total Amount Payable</h4>
+                                                                  </div>
+                                                                  <div class="col-md-12">
+                                                                    <input type="text" class="input-lg" name="pay"/>
+                                                                  </div>
+
+                                                                </div>
+                                                              </div>
+                                                        </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </section>
+                                              </div>
+                                            </form>
+
+                                    </div>  <!-- End panel-body -->
+                                </div> <!-- End panel -->
+
+                            </div> <!-- end col -->
+
+                        </div> <!-- End row -->
+
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <footer class="footer text-right">
+                    2015 © Moltran.
+                </footer>
+
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Right content here -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- END wrapper -->
+
+        <script>
+            var resizefunc = [];
+        </script>
+
+        <!-- jQuery  -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/waves.js"></script>
+        <script src="js/wow.min.js"></script>
+        <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+        <script src="js/jquery.scrollTo.min.js"></script>
+        <script src="assets/jquery-detectmobile/detect.js"></script>
+        <script src="assets/fastclick/fastclick.js"></script>
+        <script src="assets/jquery-slimscroll/jquery.slimscroll.js"></script>
+        <script src="assets/jquery-blockui/jquery.blockUI.js"></script>
+
+
+        <!-- CUSTOM JS -->
+        <script src="js/jquery.app.js"></script>
+
+
+        <!--Form Validation-->
+        <script src="assets/form-wizard/bootstrap-validator.min.js" type="text/javascript"></script>
+
+        <!--Form Wizard-->
+        <script src="assets/form-wizard/jquery.steps.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="assets/jquery.validate/jquery.validate.min.js"></script>
+
+        <!--wizard initialization-->
+        <script src="assets/form-wizard/wizard-init.js" type="text/javascript"></script>
+
+            <!--daily plan script start --><!--daily plan script start -->
+
+        <script>
+          function plan(){
+          	var quantity = document.getElementsByName("qty")[0].value;
+          	var ml = quantity * 30;
+          	var tml = quantity * 90;
+          	var hyl = quantity * 180;
+            var mcost = quantity * 30 * 70;
+          	var tmcost = quantity * 90 * 70;
+          	var hycost = quantity * 180 * 70;
+          	document.getElementById("qnty").innerHTML = quantity;
+            document.getElementById("sched").innerHTML = "Day";
+            document.getElementById("p1").innerHTML = mcost;
+            document.getElementById("p2").innerHTML = tmcost;
+            document.getElementById("p3").innerHTML = hycost;
+            document.getElementById("l1").innerHTML = ml;
+            document.getElementById("l2").innerHTML = tml;
+            document.getElementById("l3").innerHTML = hyl;
+          }
+          </script>
+
+          <!--daily plan script END -->
+
+<!-- Non-Daily Plan -->
+<script>
+  function plan_nd() {
+    var qty_nd = document.getElementById("ndqty").value;
+    document.getElementById('qnty').innerHTML = qty_nd;
+    var udaltdys = document.getElementById('udaltdays').value;
+    var temp = 30;
+    var rectd1 = document.getElementById('dod');
+    var rectd2 = document.getElementById('nod');
+    var rec = document.getElementsByName('recurr');
+    var rec_patn = "";
+
+    for (var i = 0; i < rec.length; i++) {
+      if (rec[i].checked) {
+        rec_patn = rec[i].value;
+      }
+    }
+
+    if (rec_patn == 1)
+    {
+          if (rectd1.checked) {
+            document.getElementById('sched').innerHTML = "Alternate 2 days";
+            var ml = qty_nd * 15;
+            var tml = qty_nd * 45;
+            var hyl = qty_nd * 90;
+            var mcost = qty_nd * 15 * 70;
+            var tmcost = qty_nd * 45 * 70;
+            var hycost = qty_nd * 90 * 70;
+            document.getElementById("p1").innerHTML = mcost;
+            document.getElementById("p2").innerHTML = tmcost;
+            document.getElementById("p3").innerHTML = hycost;
+            document.getElementById("l1").innerHTML = ml;
+            document.getElementById("l2").innerHTML = tml;
+            document.getElementById("l3").innerHTML = hyl;
+          }
+
+          else if (rectd2.checked) {
+            var ml = (temp/udaltdys) * qty_nd;
+            var tml = ml * 3;
+            var hyl =  tml * 6;
+            var mcost = ml * 70;
+            var tmcost = tml * 70;
+            var hycost = hyl * 70;
+            document.getElementById('sched').innerHTML = "Alternate "+ udaltdys +" days";
+            document.getElementById("p1").innerHTML = mcost;
+            document.getElementById("p2").innerHTML = tmcost;
+            document.getElementById("p3").innerHTML = hycost;
+            document.getElementById("l1").innerHTML = ml;
+            document.getElementById("l2").innerHTML = tml;
+            document.getElementById("l3").innerHTML = hyl;
+            }
+          }
+
+          else if (rec_patn == 2) {
+            var a = document.getElementsByName("days_check[]");
+            var resultarr = [];
+            for (var i= 0; i<a.length; i++) {
+  	             if(a[i].checked) {
+  		                 resultarr.push(a[i].value);
+
+  		            }
+            }
+
+  		      document.getElementById("sched").innerHTML = resultarr.toString();
+            var temp = 30;
+            var wkd = resultarr.length;
+            var ml = (temp/wkd) * qty_nd;
+            var tml = ml * 3;
+            var hyl =  ml * 6;
+            var mcost = ml * 70;
+            var tmcost = tml * 70;
+            var hycost = hyl * 70;
+            document.getElementById("p1").innerHTML = mcost;
+            document.getElementById("p2").innerHTML = tmcost;
+            document.getElementById("p3").innerHTML = hycost;
+            document.getElementById("l1").innerHTML = ml;
+            document.getElementById("l2").innerHTML = tml;
+            document.getElementById("l3").innerHTML = hyl;
+          }
+
+      }
+  </script>
+<!-- Non-Daily plan -->
+
+
+
+        <script>
+          var myVar;
+
+          function myFunction() {
+              myVar = setTimeout(showPage, 100);
+          }
+
+          function showPage() {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("wrapper").style.display = "block";
+          }
+          </script>
+
+          <script>
+          $(document).ready(function() {
+              $("div.desc").hide();
+              $("input[name$='recurr']").click(function() {
+                  var test = $(this).val();
+                  $("div.desc").hide();
+                  $("#" + test).show();
+              });
+          });
+          </script>
+          <script>
+          function pwdmatch()
+          {
+            var pwd1 = document.getElementById("password2").value;
+          	var pwd2 = document.getElementById("confirm2").value;
+          	var textpwd1 = "Password Matched";
+            var textpwd2 = "Password didn\'t Macthed";
+              	if (pwd1 != pwd2)
+                {
+              		document.getElementById("pwdmr").innerHTML = textpwd2;
+                }
+                else if (pwd1 = pwd2) {
+                  document.getElementById("pwdmr").innerHTML = textpwd1;
+                }
+            }
+
+          </script>
+
+	</body>
+</html>

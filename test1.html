@@ -1,0 +1,60 @@
+<script>
+  function plan_nd() {
+    var qty_nd = document.getElementById("ndqty").value;
+    document.getElementById('qnty').innerHTML = qty_nd;
+    var udaltdys = document.getElementById('udaltdays').value;
+    var temp = 30;
+    var rectd = document.getElementsByName('altpats');
+    var recaltd = "";
+    var rec = document.getElementsByName('recurr');
+    var rec_patn = "";
+
+    for (var i = 0; i < rec.length; i++) {
+      if (rec[i].checked) {
+        rec_patn = rec[i].value;
+      }
+    }
+
+
+    if (rec_patn = 1) {
+          for (var j = 0; j < rectd.length; j++) {
+                if (rectd[j].checked) {
+                  recaltd = rectd[j].value;
+                }
+              }
+
+                if (recaltd = 1) {
+                  document.getElementById('sched').innerHTML = "Alternate 2 days";
+                  var ml = qty_nd * 15;
+                  var tml = qty_nd * 45;
+                  var hyl = qty_nd * 90;
+                  var mcost = qty_nd * 15 * 70;
+                  var tmcost = qty_nd * 45 * 70;
+                  var hycost = qty_nd * 90 * 70;
+                  document.getElementById("p1").innerHTML = mcost;
+                  document.getElementById("p2").innerHTML = tmcost;
+                  document.getElementById("p3").innerHTML = hycost;
+                  document.getElementById("l1").innerHTML = ml;
+                  document.getElementById("l2").innerHTML = tml;
+                  document.getElementById("l3").innerHTML = hyl;
+                }
+
+                else if (recaltd = 2) {
+                  var ml = (temp/udaltdys) * qty_nd;
+                  var tml = ml * 3;
+                  var hyl =  tml * 6;
+                  var mcost = ml * 70;
+                  var tmcost = tml * 70;
+                  var hycost = hyl * 70;
+                  document.getElementById('sched').innerHTML = "Alternate "+ udaltdys +" days";
+                  document.getElementById("p1").innerHTML = mcost;
+                  document.getElementById("p2").innerHTML = tmcost;
+                  document.getElementById("p3").innerHTML = hycost;
+                  document.getElementById("l1").innerHTML = ml;
+                  document.getElementById("l2").innerHTML = tml;
+                  document.getElementById("l3").innerHTML = hyl;
+                }
+          }
+          
+      }
+  </script>

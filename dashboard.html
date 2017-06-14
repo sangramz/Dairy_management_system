@@ -1,0 +1,580 @@
+<?php
+session_start();
+ if(!$_SESSION[id])
+ {
+      header("location: index.html");
+ }
+ include 'auth/functions.php';
+ $uid = $_SESSION['id'];
+ ?>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <link rel="shortcut icon" href="">
+
+        <title>User Dashboard</title>
+
+        <!-- Base Css Files -->
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+        <!-- Font Icons -->
+        <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="assets/ionicon/css/ionicons.min.css" rel="stylesheet" />
+        <link href="css/material-design-iconic-font.min.css" rel="stylesheet">
+        <link href="assets/timepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+
+
+        <!-- animate css -->
+        <link href="css/animate.css" rel="stylesheet" />
+
+        <!-- Waves-effect -->
+        <link href="css/waves-effect.css" rel="stylesheet">
+
+        <!-- sweet alerts -->
+        <link href="assets/sweet-alert/sweet-alert.min.css" rel="stylesheet">
+
+        <!-- Custom Files -->
+        <link href="css/helper.css" rel="stylesheet" type="text/css" />
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <link href="assets/timepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/notifications/notification.css" rel="stylesheet" />
+
+
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="js/modernizr.min.js"></script>
+
+    </head>
+
+
+
+    <body class="fixed-left">
+
+        <!-- Begin page -->
+        <div id="wrapper">
+
+            <!-- Top Bar Start -->
+            <div class="topbar">
+                <!-- LOGO -->
+                <div class="topbar-left">
+                    <div class="text-center">
+                        <a href="index.html" class="logo"></a>
+                    </div>
+                </div>
+                <!-- Button mobile view to collapse sidebar menu -->
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="container">
+                        <div class="">
+                            <div class="pull-left">
+                                <button class="button-menu-mobile open-left">
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                                <span class="clearfix"></span>
+                            </div>
+                            <form class="navbar-form pull-left" role="search">
+                                <div class="form-group">
+                                    <input type="text" class="form-control search-bar" placeholder="Type here for search...">
+                                </div>
+                                <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
+                            </form>
+
+                            <ul class="nav navbar-nav navbar-right pull-right">
+
+                                                            <li class="hidden-xs">
+                                                                <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i class="md md-crop-free"></i>FullScreen</a>
+                                                            </li>
+
+                                                            <li class="dropdown">
+                                                                <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><span class="fa fa-user"> Options</span></a>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile</a></li>
+                                                                    <li><a href="/ms/auth/logout.php"><i class="md md-settings-power"></i> Logout</a></li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                        </div>
+                        <!--/.nav-collapse -->
+                    </div>
+                </div>
+            </div>
+            <!-- Top Bar End -->
+
+
+            <!-- ========== Left Sidebar Start ========== -->
+
+            <div class="left side-menu">
+                <div class="sidebar-inner slimscrollleft">
+                    <div class="user-details">
+                        <div class="pull-left">
+                            <img src="" alt="" class="thumb-md img-circle">
+                        </div>
+                        <div class="user-info">
+                            <div class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><?php echo $_SESSION['name1']." ".$_SESSION['name2']." ".$_SESSION['name3']; ?><span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="profile.html"><i class="md md-face-unlock"></i> Profile<div class="ripple-wrapper"></div></a></li>
+
+                                    <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>
+                                    <li><a href="/ms/auth/logout.php"><i class="md md-settings-power"></i> Logout</a></li>
+                                </ul>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!--- Divider -->
+                    <div id="sidebar-menu">
+                        <ul>
+                            <li>
+                                <a href="index.html" class="waves-effect active"><i class="md md-home"></i><span> Dashboard </span></a>
+                            </li>
+                            <li>
+                                <a href="profile.html" class="waves-effect"><i class="fa fa-user"></i><span> Profile </span></a>
+                            </li>
+                            <li>
+                                <a href="pay.html" class="waves-effect"><i class="fa fa-cart-plus"></i><span> Pay Now </span></a>
+                            </li>
+                            <li>
+                                <a href="activity.html" class="waves-effect"><i class="fa fa-bars"></i><span> Recent Activity </span></a>
+                            </li>
+                            <li>
+                                <a href="payment.html" class="waves-effect"><i class="fa fa-credit-card"></i><span> Payment </span></a>
+                            </li>
+                            <li>
+                                <a href="preferences.html" class="waves-effect"><i class="fa fa-sliders"></i><span> Preferences </span></a>
+                            </li>
+                            <li>
+                                <a href="feedback.html" class="waves-effect"><i class="fa fa-comment"></i><span> Feedback </span></a>
+                            </li>
+
+
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <!-- Left Sidebar End -->
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container">
+                      <?php paus($uid); ?>
+                        <!-- Page-Title -->
+                        <div class="row">
+                            <div class="col-sm-6">
+
+                                <h4 class="pull-left page-title">Welcome ! <?php echo $_SESSION['name1']; ?></h4>
+
+                            </div>
+                            <div class="col-sm-6">
+                                <h4 class="pull-right page-title" id="date"></h4>
+                                <script>
+                                document.getElementById("date").innerHTML = Date();
+                                </script>
+
+                            </div>
+                        </div>
+
+<!--The page starts here -->
+
+<div class="row">
+
+  <div class="col-md-5">
+    <div class="panel panel-color panel-success">
+    <div class="panel-heading">
+    <h3 class="panel-title">Quantity in Litres</h3>
+    </div>
+    <div class="panel-body" style="text-align:center">
+
+      <h3> <?php getUserData($uid, 'qty'); ?> Litres</h3>
+    </div>
+    </div>
+  </div>
+
+  <div class="col-md-5">
+    <div class="panel panel-color panel-success">
+    <div class="panel-heading">
+    <h3 class="panel-title">Estimated Renewable Date</h3>
+    </div>
+    <div class="panel-body" style="text-align:center">
+      <h3><?php getUserData($uid, 'renew_date'); ?> </h3>
+    </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="row">
+
+  <div class="col-md-7">
+    <div class="panel panel-color panel-success">
+    <div class="panel-heading">
+    <h3 class="panel-title">My Regular Milk Requirement</h3>
+    </div>
+    <div class="panel-body">
+
+      <p><b>Quantity:</b> <?php getUserData($uid, 'qty'); ?> Litres</p>
+      <p><b>Schedule:</b> <?php getUserData($uid, 'plan'); ?></p>
+      </p><b>Subscription Started from:</b> <?php getUserData($uid, 'pay_date'); ?></p>
+    </div>
+    <div class="panel-footer">
+      <span data-toggle="tooltip" data-placement="right" title="" data-original-title="A new regular milk requirement">
+      <button type="button" class="btn btn-inverse btn-lg" data-toggle="modal" data-target="#new_reqr">Enter New Requirement</button>
+      </span>
+      <!-- New Req Modal -->
+      <div id="new_reqr" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Enter New Milk Requirement</h4>
+            </div>
+            <div class="modal-body">
+
+              <div class="row">
+                <form action="auth/new_req.php" method="post">
+                  <label> With effect from: </label>
+                  <div class="input-group col-md-5">
+                    <input type="text" class="form-control" name="reqdt" data-date-format="dd/mm/yyyy" placeholder="dd/mm/yyyy" id="datepicker">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                  </div>
+
+                <br/><br/>
+
+                <hr>
+                <div class="col-md-6">
+                  <div class="input-group">
+                  New Quantity: (in Litres):
+                  <input type="text" class="form-control" id="qnty" name="qty" style="color:gray">
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="input-group">
+                    <br/>
+                    <a class="btn btn-primary pull-right" id="sched">More Options</a>
+                </div>
+                </div>
+              </div>
+
+              <div id="req_li">
+              <div class="row">
+                <div class="col-md-6">
+                  <h4>Recurrence Patterns</h4>
+
+                  <div class="row">
+                  <div class="col-md-12">
+                  <input type="radio" name="recur" value="1"/>Every Alternate Two Days
+                  </div>
+                  </div>
+
+                  <div class="row">
+                  <div class="col-md-6">
+                  <input type="radio" name="recur" value="2"/>Every Alternate
+                  </div>
+                  <div class="col-md-5">
+                  <input type="text" name="altdays" class="col-md-5"/>  Days
+                  </div>
+                  </div>
+
+                  <div class="row">
+                  <div class="col-md-6">
+                  <input type="radio" id='w_li' name="recur" value="3"/> Weekly :
+                  </div>
+                  </div>
+                  <div id="wd_li" class="row">
+                    <input name="days_check[]" value="Sunday" type="checkbox"/> Sunday
+                    <input name="days_check[]" value="Monday" type="checkbox"/> Monday
+                    <input name="days_check[]" value="Tuesday" type="checkbox"/> Tuesday<br>
+                    <input name="days_check[]" value="Wednesday" type="checkbox"/> Wednesday
+                    <input name="days_check[]" value="Thursday" type="checkbox"/> Thursday
+                    <input name="days_check[]" value="Friday" type="checkbox"/> Friday<br/>
+                    <input name="days_check[]" value="Saturday" type="checkbox"/> Saturday
+                  </div>
+
+                </div>
+                <div class="col-md-6">
+                  <h4>List of Plans</h4>
+                  <input type="radio" name="subs" value="1"/> Monthly Subscription<br/>
+                  <input type="radio" name="subs" value="2"/> Quaterly Subscription<br/>
+                  <input type="radio" name="subs" value="3"/> Half Subscription<br/>
+                </div>
+            </div>
+            </div>
+
+            </div>
+            <div class="modal-footer">
+              <input type="submit" class="btn btn-success" name="reqchng">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel </button>
+            </div>
+          </div>
+        </form>
+
+        </div>
+      </div>
+      <!-- New Req Modal -->
+
+    </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="panel panel-color panel-danger">
+      <div class="panel-heading">
+        <div class="panel-title">
+          <h3 class="panel-title">Delivery Adjustments</h3>
+        </div>
+      </div>
+      <div class="panel-body" style="text-align:center">
+
+        <span data-toggle="tooltip" data-placement="left" title="" data-original-title="Stop your delivery for 1 day or more days">
+        <button type="button" class="btn btn-inverse btn-lg" data-toggle="modal" data-target="#pause">Pause Delivery</button>
+        </span>
+
+        <!-- Modal -->
+          <div id="pause" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Pause Delivery</h4>
+                </div>
+                <div class="modal-body">
+                  <form action="auth/pause.php" method="post">
+                  <div class="input-group col-md-5">
+                    <input type="text" class="form-control" name="paudt" data-date-format="dd/mm/yyyy" placeholder="dd/mm/yyyy" id="datepicker1">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <input type="submit" class="btn btn-success" name="pause"/>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </form>
+              </div>
+
+            </div>
+          </div>
+
+                <br/><br/>
+
+        <span data-toggle="tooltip" data-placement="left" title="" data-original-title="One time change to your regular requirement">
+        <button type="button" class="btn btn-inverse btn-lg" data-toggle="modal" data-target="#myModal">Adhoc Change</button>
+      </span>
+        <!-- Modal -->
+          <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Adhoc Change</h4>
+                </div>
+                <form action="auth/new_req.php" method="post">
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <h5>Select Date :</h5>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="input-group">
+                        <input type="text" class="form-control" name="adhocdt" data-date-format="dd/mm/yyyy" placeholder="dd/mm/yyyy" id="datepicker2">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <a href="#">More Option</a>
+                    </div>
+                  </div>
+<br/><br/>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <label>Variant</label>
+                      <h5>Homogenous & Pasturized Milk</h5>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="">Existing Quantity</label>
+                      <input type="text" class="form-control" disabled="" value="<?php getUserData($uid, 'qty'); ?> Litres">
+                    </div>
+                    <div class="col-md-4">
+                      <label for="">Change Order</label>
+                      <input type="text" class="form-control" name="qnty" placeholder="New Quantity"/>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="modal-footer">
+                  <input type="submit" class="btn btn-success" name="adhoc">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </form>
+              </div>
+
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!--The page ends here -->
+
+
+
+
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <footer class="footer text-right">
+                    2015 © Moltran.
+                </footer>
+
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Right content here -->
+            <!-- ============================================================== -->
+
+
+
+
+        </div>
+        <!-- END wrapper -->
+
+
+
+        <script>
+            var resizefunc = [];
+        </script>
+
+        <!-- jQuery  -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/waves.js"></script>
+        <script src="js/wow.min.js"></script>
+        <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+        <script src="js/jquery.scrollTo.min.js"></script>
+        <script src="assets/chat/moment-2.2.1.js"></script>
+        <script src="assets/jquery-sparkline/jquery.sparkline.min.js"></script>
+        <script src="assets/jquery-detectmobile/detect.js"></script>
+        <script src="assets/fastclick/fastclick.js"></script>
+        <script src="assets/jquery-slimscroll/jquery.slimscroll.js"></script>
+        <script src="assets/jquery-blockui/jquery.blockUI.js"></script>
+
+        <script src="assets/notifications/notify.min.js"></script>
+        <script src="assets/notifications/notify-metro.js"></script>
+        <script src="assets/notifications/notifications.js"></script>
+
+
+        <!-- sweet alerts -->
+        <script src="assets/sweet-alert/sweet-alert.min.js"></script>
+        <script src="assets/sweet-alert/sweet-alert.init.js"></script>
+
+
+
+        <!-- Counter-up -->
+        <script src="assets/counterup/waypoints.min.js" type="text/javascript"></script>
+        <script src="assets/counterup/jquery.counterup.min.js" type="text/javascript"></script>
+
+        <!-- CUSTOM JS -->
+        <script src="js/jquery.app.js"></script>
+
+        <!-- Dashboard -->
+        <script src="js/jquery.dashboard.js"></script>
+        <script src="assets/timepicker/bootstrap-datepicker.js"></script>
+
+        <!-- Chat -->
+        <script src="js/jquery.chat.js"></script>
+
+        <!-- Todo -->
+        <script src="js/jquery.todo.js"></script>
+
+        <script type="text/javascript">
+            /* ==============================================
+            Counter Up
+            =============================================== */
+            jQuery(document).ready(function($) {
+                $('.counter').counterUp({
+                    delay: 100,
+                    time: 1200
+                });
+            });
+        </script>
+
+        <script>
+        jQuery('#datepicker').datepicker();
+              jQuery('#datepicker-inline').datepicker({
+                  format: 'dd/mm/yyyy',
+                  showButtonPanel: true
+              });
+        jQuery('#datepicker1').datepicker();
+              jQuery('#datepicker-inline').datepicker({
+                  format: 'dd/mm/yyyy',
+                  showButtonPanel: true,
+                  autoclose: true
+                  });
+        jQuery('#datepicker2').datepicker();
+              jQuery('#datepicker-inline').datepicker({
+                  format: 'dd/mm/yyyy',
+                  showButtonPanel: true,
+                  autoclose: true
+                  });
+
+      </script>
+      <script>
+      jQuery(document).ready(function($) {
+        $("#req_li").hide();
+        $("#sched").click(function() {
+            $("#req_li").toggle();
+        });
+      });
+      </script>
+
+      <script>
+      jQuery(document).ready(function($) {
+        $("#wd_li").hide();
+        $("#w_li").click(function() {
+            $("#wd_li").toggle();
+        });
+      });
+      </script>
+
+      <?php include 'auth/notify.php'; ?>
+
+
+
+
+
+
+
+    </body>
+</html>
